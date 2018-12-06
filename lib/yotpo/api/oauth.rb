@@ -1,5 +1,15 @@
 module Yotpo
   module Oauth
+
+    def generate_token(params)
+      request = {
+        client_id: params[:client_id],
+        client_secret: params[:client_secret],
+        grant_type: params[:grant_type]
+      }
+      post('/oauth/token', request)
+    end
+
     def validate_token(params)
       request = {
           token: params[:utoken],
@@ -17,5 +27,3 @@ module Yotpo
     end
   end
 end
-
-
